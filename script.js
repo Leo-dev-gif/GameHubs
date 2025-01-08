@@ -3,7 +3,9 @@ let isGameActive = false;
 const ball = document.getElementById('ball');
 const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
+const timeDisplay = document.getElementById('time');
 const startButton = document.getElementById('start-button');
+let gameTimer;
 
 // Inizia il gioco
 startButton.addEventListener('click', startGame);
@@ -12,9 +14,11 @@ function startGame() {
     score = 0;
     isGameActive = true;
     scoreDisplay.textContent = score;
+    timeDisplay.textContent = 30;
     startButton.disabled = true;
     ball.style.display = 'block';
     moveBall();
+    startTimer();
 }
 
 // Muove la pallina in posizioni casuali
@@ -33,7 +37,7 @@ function moveBall() {
     ball.style.left = `${randomX}px`;
     ball.style.top = `${randomY}px`;
 
-    // Muove la pallina ogni 1 secondo
+    // Muove la pallina ogni 1.5 secondi
     setTimeout(moveBall, 1500);
 }
 
@@ -47,12 +51,25 @@ ball.addEventListener('click', () => {
     moveBall();
 });
 
+function startTimer() {
+    let timeLeft = 30;
+    gameTimer = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timeDisplay.textContent = timeLeft;
+        } else {
+            clearInterval(gameTimer);
+            endGame();
+        }
+    }, 1000);
+}
+
+function endGame() {
+    isGameActive = false;
+    ball.style.display = 'none';
+    startButton.disabled = false;
+    alert(`Tempo scaduto! Il tuo punteggio finale è ${score}`);
+}
+
 // Ferma il gioco dopo 30 secondi
-setTimeout(() => {
-    if (isGameActive) {
-        isGameActive = false;
-        ball.style.display = 'none';
-        startButton.disabled = false;
-        alert(`Tempo scaduto! Il tuo punteggio finale è ${score}`);
-    }
-}, 30000); // 30 secondi
+setTimeout(endGame, 30000); // 30 secondi
