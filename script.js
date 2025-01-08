@@ -48,7 +48,6 @@ ball.addEventListener('click', () => {
 });
 
 // Ferma il gioco dopo 30 secondi
-// Ferma il gioco dopo 30 secondi
 setTimeout(() => {
     if (isGameActive) {
         isGameActive = false;
