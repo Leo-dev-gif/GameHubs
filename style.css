@@ -72,6 +72,10 @@ body {
 }
 
 /* Selezione tema */
+.theme-select-container {
+    margin-bottom: 20px;
+}
+
 .theme-select {
     background: #00cec9;
     color: #fff;
@@ -81,7 +85,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-bottom: 20px;
 }
 
 .theme-select:hover {
