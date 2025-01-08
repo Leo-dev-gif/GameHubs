@@ -1,59 +1,56 @@
-/* Stile generale */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #74b9ff, #0984e3);
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+let score = 0;
+let isGameActive = false;
+const ball = document.getElementById('ball');
+const gameArea = document.getElementById('game-area');
+const scoreDisplay = document.getElementById('score');
+const startButton = document.getElementById('start-button');
+
+// Inizia il gioco
+startButton.addEventListener('click', startGame);
+
+function startGame() {
+    score = 0;
+    isGameActive = true;
+    scoreDisplay.textContent = score;
+    startButton.disabled = true;
+    ball.style.display = 'block';
+    moveBall();
 }
 
-/* Contenitore del gioco */
-.container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+// Muove la pallina in posizioni casuali
+function moveBall() {
+    if (!isGameActive) return;
+
+    const areaWidth = gameArea.clientWidth;
+    const areaHeight = gameArea.clientHeight;
+
+    const ballSize = ball.offsetWidth;
+
+    // Posizioni casuali
+    const randomX = Math.random() * (areaWidth - ballSize);
+    const randomY = Math.random() * (areaHeight - ballSize);
+
+    ball.style.left = `${randomX}px`;
+    ball.style.top = `${randomY}px`;
+
+    // Muove la pallina ogni 1 secondo
+    setTimeout(moveBall, 1000);
 }
 
-/* Area di gioco */
-#game-area {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background-color: #dfe6e9;
-    border: 2px solid #636e72;
-    border-radius: 10px;
-    margin: 20px 0;
-    overflow: hidden;
-}
+// Incrementa il punteggio
+ball.addEventListener('click', () => {
+    if (!isGameActive) return;
+    score++;
+    scoreDisplay.textContent = score;
 
-/* Pallina */
-#ball {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, #fd79a8, #e84393);
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; /* Sarà visibile solo durante il gioco */
-}
+    // Bonus: Muove immediatamente la pallina
+    moveBall();
+});
 
-/* Pulsante */
-#start-button {
-    background: #00cec9;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#start-button:hover {
-    background: #00b894;
-}
+// Ferma il gioco dopo 30 secondi
+setTimeout(() => {
+    if (isGameActive) {
+        isGameActive = false;
+        ball.style.display = 'none';
+        startButton.disabled = false;
+        alert(`Tempo scaduto! Il tuo punteggio finale
