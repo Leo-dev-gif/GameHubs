@@ -5,10 +5,12 @@ const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('time');
 const startButton = document.getElementById('start-button');
+const themeSelect = document.getElementById('theme-select');
 let gameTimer;
 
 // Inizia il gioco
 startButton.addEventListener('click', startGame);
+themeSelect.addEventListener('change', changeTheme);
 
 function startGame() {
     score = 0;
@@ -71,5 +73,15 @@ function endGame() {
     alert(`Tempo scaduto! Il tuo punteggio finale è ${score}`);
 }
 
-// Ferma il gioco dopo 30 secondi
-setTimeout(endGame, 30000); // 30 secondi
+function changeTheme() {
+    const theme = themeSelect.value;
+    if (theme === 'dark') {
+        document.body.style.background = '#333';
+        gameArea.style.backgroundColor = '#444';
+        ball.style.background = 'radial-gradient(circle, #ff7675, #d63031)';
+    } else if (theme === 'light') {
+        document.body.style.background = '#fff';
+        gameArea.style.backgroundColor = '#dfe6e9';
+        ball.style.background = 'radial-gradient(circle, #74b9ff, #0984e3)';
+    }
+}
