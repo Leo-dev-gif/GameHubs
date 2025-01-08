@@ -1,19 +1,23 @@
+GameHubs
 GameHubs is a simple and interactive web game where the objective is to click on a moving ball as many times as possible within a given time frame. The game features a theme selection option allowing users to switch between light and dark themes.
 
 Features
 Interactive Gameplay: Click the moving ball to score points.
 Theme Selection: Choose between light and dark themes for a personalized experience.
 Countdown Timer: The game includes a countdown timer to challenge users to achieve a high score within 30 seconds.
+
 Technologies Used
 HTML: Structure of the web pages
 CSS: Styling and layout of the game
 JavaScript: Game logic and interactivity
+
 How to Play
 Open the game in a web browser.
 Select your preferred theme from the dropdown menu above the game container.
 Click the "Inizia" button to start the game.
 Click on the moving ball as many times as you can within 30 seconds.
 Your score will be displayed, and the game will end when the timer reaches zero.
+
 Project Structure
 index.html: The main HTML file containing the structure of the game.
 style.css: The CSS file for styling the game.
