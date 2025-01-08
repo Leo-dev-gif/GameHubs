@@ -48,9 +48,12 @@ ball.addEventListener('click', () => {
 });
 
 // Ferma il gioco dopo 30 secondi
+// Ferma il gioco dopo 30 secondi
 setTimeout(() => {
     if (isGameActive) {
         isGameActive = false;
         ball.style.display = 'none';
         startButton.disabled = false;
-        alert(`Tempo scaduto! Il tuo punteggio finale
+        alert(`Tempo scaduto! Il tuo punteggio finale è ${score}`);
+    }
+}, 30000); // 30 secondi
