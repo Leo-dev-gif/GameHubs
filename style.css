@@ -7,6 +7,7 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -18,6 +19,7 @@ body {
     border-radius: 10px;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
 }
 
 /* Area di gioco */
@@ -67,4 +69,21 @@ body {
 
 #start-button:active {
     transform: scale(0.95);
+}
+
+/* Selezione tema */
+.theme-select {
+    background: #00cec9;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.theme-select:hover {
+    background: #00b894;
 }
