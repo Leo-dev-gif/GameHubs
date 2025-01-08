@@ -34,7 +34,7 @@ function moveBall() {
     ball.style.top = `${randomY}px`;
 
     // Muove la pallina ogni 1 secondo
-    setTimeout(moveBall, 1000);
+    setTimeout(moveBall, 1500);
 }
 
 // Incrementa il punteggio
