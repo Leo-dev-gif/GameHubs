@@ -1,4 +1,3 @@
-GameHubs
 GameHubs is a simple and interactive web game where the objective is to click on a moving ball as many times as possible within a given time frame. The game features a theme selection option allowing users to switch between light and dark themes.
 
 Features
