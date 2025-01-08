@@ -1,6 +1,6 @@
 /* Stile generale */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(to bottom right, #74b9ff, #0984e3);
     color: #fff;
     text-align: center;
@@ -17,6 +17,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Area di gioco */
@@ -29,6 +30,7 @@ body {
     border-radius: 10px;
     margin: 20px 0;
     overflow: hidden;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Pallina */
@@ -40,6 +42,11 @@ body {
     border-radius: 50%;
     cursor: pointer;
     display: none; /* Sarà visibile solo durante il gioco */
+    transition: transform 0.2s;
+}
+
+#ball:active {
+    transform: scale(1.2);
 }
 
 /* Pulsante */
@@ -51,9 +58,13 @@ body {
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #start-button:hover {
     background: #00b894;
+}
+
+#start-button:active {
+    transform: scale(0.95);
 }
