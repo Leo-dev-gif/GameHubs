@@ -65,6 +65,13 @@ function startTimer() {
         }
     }, 1000);
 }
+document.getElementById('theme-select').addEventListener('change', function() {
+    if (this.value === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+});
 
 function endGame() {
     isGameActive = false;

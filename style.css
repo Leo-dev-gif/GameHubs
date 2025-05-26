@@ -1,92 +1,154 @@
-/* Stile generale */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom right, #74b9ff, #0984e3);
-    color: #fff;
-    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    transition: background 0.5s;
 }
 
-/* Contenitore del gioco */
-.container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
-}
-
-/* Area di gioco */
-#game-area {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background-color: #dfe6e9;
-    border: 2px solid #636e72;
-    border-radius: 10px;
-    margin: 20px 0;
-    overflow: hidden;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Pallina */
-#ball {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, #fd79a8, #e84393);
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; /* Sarà visibile solo durante il gioco */
-    transition: transform 0.2s;
-}
-
-#ball:active {
-    transform: scale(1.2);
-}
-
-/* Pulsante */
-#start-button {
-    background: #00cec9;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-#start-button:hover {
-    background: #00b894;
-}
-
-#start-button:active {
-    transform: scale(0.95);
-}
-
-/* Selezione tema */
 .theme-select-container {
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
 }
 
 .theme-select {
-    background: #00cec9;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: background 0.3s;
 }
 
-.theme-select:hover {
-    background: #00b894;
+.container {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(60,72,100,0.12);
+    padding: 40px 32px 32px 32px;
+    text-align: center;
+    min-width: 340px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #3b3b5c;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #4b5563;
+    margin: 8px 0;
+}
+
+#game-area {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 24px auto 16px auto;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(60,72,100,0.10);
+    overflow: hidden;
+    border: 2px solid #6366f1;
+}
+
+#ball {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: radial-gradient(circle at 30% 30%, #6366f1 70%, #818cf8 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(99,102,241,0.25);
+    cursor: pointer;
+    transition: transform 0.1s;
+    border: 3px solid #fff;
+    animation: pop-in 0.3s;
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#ball:active {
+    transform: scale(0.9);
+}
+
+#start-button {
+    padding: 12px 32px;
+    background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.12);
+    margin-top: 12px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#start-button:hover {
+    background: linear-gradient(90deg, #818cf8 0%, #6366f1 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 500px) {
+    .container {
+        min-width: unset;
+        width: 95vw;
+        padding: 18px 4vw 18px 4vw;
+    }
+    #game-area {
+        width: 90vw;
+        height: 90vw;
+        min-width: 180px;
+        min-height: 180px;
+        max-width: 320px;
+        max-height: 320px;
+    }
+}
+
+/* Dark Theme */
+body.dark {
+    background: linear-gradient(135deg, #18181b 0%, #312e81 100%);
+}
+
+body.dark .container {
+    background: #23233a;
+    box-shadow: 0 8px 32px rgba(30,30,60,0.18);
+}
+
+body.dark h1, body.dark p {
+    color: #e0e7ff;
+}
+
+body.dark #game-area {
+    background: linear-gradient(135deg, #312e81 0%, #23233a 100%);
+    border: 2px solid #818cf8;
+}
+
+body.dark #ball {
+    background: radial-gradient(circle at 30% 30%, #818cf8 70%, #6366f1 100%);
+    border: 3px solid #23233a;
+}
+
+body.dark #start-button {
+    background: linear-gradient(90deg, #818cf8 0%, #6366f1 100%);
+    color: #fff;
+}
+
+body.dark .theme-select {
+    background: #23233a;
+    color: #e0e7ff;
+    border: 1px solid #818cf8;
 }
